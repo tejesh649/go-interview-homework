@@ -133,7 +133,7 @@ func seed(ctx context.Context, db *sql.DB) error {
 		for _, t := range u.Tasks {
 			var taskID int64
 			err := tx.QueryRowContext(ctx,
-				"INSERT INTO tasks (`user_id`, `title`, `description`, `status`, `due_date`) VALUES ($1, $2, $3, $4, $5) RETURNING id",
+				`INSERT INTO tasks (user_id, title, description, status, due_date) VALUES ($1, $2, $3, $4, $5) RETURNING id`,
 				userID, t.Title, nullableString(t.Description), t.Status, t.DueDate,
 			).Scan(&taskID)
 			if err != nil {

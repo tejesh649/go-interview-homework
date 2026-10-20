@@ -15,6 +15,7 @@ const QUERY = `
       tasks {
         id
         title
+        description
         status
         tags
       }
@@ -51,9 +52,18 @@ function el(tag, attrs = {}, children = []) {
   }
   return node;
 }
-
 function renderTask(task) {
-  const title = el("div", { class: "task-title", text: task.title });
+  const title = el("div", {
+    class: "task-title",
+    text: task.title,
+  });
+
+  const description = task.description
+    ? el("div", {
+        class: "task-description",
+        text: task.description,
+      })
+    : null;
 
   const statusPill = el("span", {
     class: `status-pill ${task.status.toLowerCase()}`,
@@ -66,7 +76,11 @@ function renderTask(task) {
     meta.appendChild(el("span", { class: "tag", text: tag }));
   }
 
-  return el("li", { class: "task" }, [title, meta]);
+  return el("li", { class: "task" }, [
+    title,
+    description,
+    meta,
+  ]);
 }
 
 function renderUser(user) {

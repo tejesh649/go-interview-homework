@@ -195,3 +195,10 @@ main {
   border-radius: 3px;
   font-size: 11px;
 }
+
+.task-description {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ally-lavender);
+  overflow-wrap: anywhere;
+}

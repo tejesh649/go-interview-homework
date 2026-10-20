@@ -20,3 +20,6 @@
 # Internal
 INTERVIEWER_NOTES.md
 .claude/
+
+# Local build output
+/server
